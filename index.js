@@ -1,8 +1,9 @@
 import express from 'express';
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import authRoute from "./routes/auth.js";
 import cors from 'cors'
+import authRoute from "./routes/auth.js";
+import productRoute from "./routes/product.js";
 
 const app = express();
 dotenv.config();
@@ -24,7 +25,8 @@ app.get('/', (req, res) => {
     res.send('<h1>Hello, Express.js Server!</h1>');
 });
 
-app.use("auth", authRoute);
+app.use("/auth", authRoute);
+app.use("/product", productRoute);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
